@@ -1,0 +1,70 @@
+#!/bin/bash
+
+clear
+echo "Initializing Facebook brute force attack tool..."
+sleep 2
+
+target="friend.user"
+echo "Target account: $target"
+echo "Starting attack in 3..."
+sleep 1
+echo "2..."
+sleep 1
+echo "1..."
+sleep 1
+
+passwords=(
+  "123456" "password" "qwerty" "letmein" "iloveyou"
+  "admin123" "welcome" "football" "sunshine" "princess"
+  "password1" "abc123" "123123" "dragon" "monkey"
+  "shadow" "master" "hello123" "freedom" "whatever"
+  "trustno1" "hunter2" "superman" "batman" "starwars"
+)
+
+rand_delay() {
+  sleep_time=$(awk -v min=0.7 -v max=1.3 'BEGIN{srand(); print min+rand()*(max-min)}')
+  sleep $sleep_time
+}
+
+progress_bar() {
+  echo -n "["
+  for i in $(seq 1 30); do
+    echo -n "#"
+    sleep 0.05
+  done
+  echo "]"
+}
+
+echo ""
+echo "Connecting to Facebook servers..."
+progress_bar
+echo "Connection established."
+sleep 1
+
+echo "Bypassing login protections..."
+progress_bar
+echo "Protections bypassed."
+sleep 1
+
+echo ""
+echo "Launching password attempts..."
+sleep 1
+
+for pass in "${passwords[@]}"; do
+  echo "Trying password: $pass"
+  rand_delay
+done
+
+echo ""
+echo "Finalizing attack..."
+progress_bar
+sleep 2
+
+echo ""
+echo "Password found! ✔"
+echo "Password is: hunter2"
+sleep 2
+
+echo ""
+echo "Warning: This was a prank script!"
+echo "No real hacking was done. Just for fun :)"
